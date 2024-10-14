@@ -19,7 +19,9 @@ const Header = () => {
       <nav className="nav-links">
         <Link className="nav-link home" to={homeLink}><IoHome className="icon" />홈</Link>
         <Link className="nav-link" to="/seoultravel/seoulmap"><GiTreasureMap className="icon" />서울맵</Link>
+        <Link className="nav-link" to="/seoultravel/edit/map"><GiTreasureMap className="icon" />맵 편집</Link>
         <Link className="nav-link" to="/seoultravel/random/station"><GiPerspectiveDiceSixFacesRandom className="icon" />랜덤 역</Link>
+        <Link className="nav-link" to="/seoultravel/station/memo"><GiPerspectiveDiceSixFacesRandom className="icon" />역 메모장</Link>
         <Link className="nav-link login-link" to="/seoultravel/login"><CiLogin className="icon" />로그인</Link>
       </nav>
     </header>
