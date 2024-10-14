@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import React from "react";
+
+import MainHome from './pages/mainpage/MainHome';
+import SeoulMap from './pages/seoulmap/SeoulMap';
+import RandomStation from './pages/randomstationpage/RandomStation';
+import Login from './pages/loginpage/Login';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<MainHome />} />
+        <Route path="/seoultravel/seoulmap" element={<SeoulMap />} />
+        <Route path="/seoultravel/random/station" element={<RandomStation />} />
+        <Route path="/seoultravel/login" element={<Login />} />
+      </Routes>
     </div>
   );
 }
