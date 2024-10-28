@@ -4,7 +4,7 @@ import '../../styles/SeoulMap.css';
 const SeoulMap = () => {
   return (
     <div className="main-page">
-      <h1>서울 지도 화면구현</h1>
+      <h1>서울 지도 화면</h1>
       <div className="map-container">
         <img src="/assets/topography/서울지형.png" alt="서울 지형" className="map-image" />
 
