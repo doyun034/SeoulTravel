@@ -1,0 +1,38 @@
+.main-page {
+  text-align: center;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+}
+
+.map-image {
+  width: 500px;
+  height: auto;
+}
+
+
+
+.district.seongbuk {
+  position: absolute;
+  top: 80px;
+  /* 성북구 위치 */
+  left: 250px;
+  /* 성북구 위치 */
+}
+
+.district .seongbuk-hover-image {
+  position: absolute;
+  width: 120px;
+  height: 100px;
+  background-image: url('../../public/assets/topography/성북구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 핫스팟에 마우스를 올렸을 때 성북구 이미지 나타남 */
+.district:hover .seongbuk-hover-image {
+  opacity: 1;
+}

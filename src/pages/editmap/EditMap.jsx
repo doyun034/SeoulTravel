@@ -1,5 +1,5 @@
 import React from 'react';
-import './EditMap.css';
+import '../../styles/EditMap.css';
 
 const EditMap = () => {
   return (

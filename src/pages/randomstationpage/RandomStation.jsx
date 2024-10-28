@@ -1,5 +1,5 @@
 import React from 'react';
-import './RandomStation.css';
+import '../../styles/RandomStation.css';
 
 const RandomStation = () => {
   return (

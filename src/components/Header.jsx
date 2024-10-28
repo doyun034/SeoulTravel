@@ -4,7 +4,7 @@ import { IoHome, IoSearch } from "react-icons/io5";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 import { GiTreasureMap } from "react-icons/gi";
 import { CiLogin } from "react-icons/ci";
-import './Header.css';
+import '../styles/Header.css';
 
 const Header = () => {
   const [homeLink, setHomeLink] = useState('/');
