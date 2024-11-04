@@ -6,6 +6,8 @@ import { GiTreasureMap } from "react-icons/gi";
 import { CiLogin } from "react-icons/ci";
 import '../styles/Header.css';
 
+import logo from '../assets/images/mainlogo.png';
+
 const Header = () => {
   const [homeLink, setHomeLink] = useState('/');
 
@@ -13,7 +15,7 @@ const Header = () => {
     <header className="header">
       <div className="logo-container">
         <span className="logo-text">그리다,</span>
-        <img src="/images/mainlogo.png" alt="로고" className="logo" />
+        <img src={logo} alt="로고" className="logo" />
         <span className="logo-text">서울</span>
       </div>
       <nav className="nav-links">
