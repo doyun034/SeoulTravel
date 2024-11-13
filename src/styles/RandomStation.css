@@ -1,0 +1,163 @@
+.main-page {
+  /* 페이지 전체를 수직 방향으로 정렬하여 화면 중앙에 배치 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  /* 메인 콘텐츠 영역을 수평 방향으로 정렬하고 내부 요소를 가운데 배치 */
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* 자식 요소의 높이가 동일하게 유지되도록 설정 */
+  flex-direction: row;
+  padding: 40px;
+  max-width: 1200px; /* 최대 너비 설정 */
+  width: 100%;
+}
+
+.map-container {
+  /* 서울 지도 이미지를 포함하는 컨테이너로, 위치를 고정하고 크기를 조정 */
+  flex: 1;
+  position: relative; /* 고정된 위치 */
+  margin-right: 20px; /* 오른쪽 여백 추가 */
+  flex-shrink: 0; /* 이미지 크기 고정 */
+  max-width: 600px; /* 최대 너비 설정 */
+}
+
+.seoul-map {
+  /* 서울 지도 이미지의 크기 설정 */
+  width: 100%;
+  height: auto;
+  border: none;
+}
+
+.random-station-container {
+  /* 랜덤 역 선택 영역을 스타일링 */
+  flex: 1;
+  text-align: center;
+  background-color: #fff; /* 배경색 흰색 설정 */
+  padding: 40px;
+  margin-left: 20px; /* 왼쪽 여백 추가 */
+}
+
+.title {
+  font-size: 32px; /* 글자 크기 설정 */
+  font-family: 'Brush Script MT', cursive; /* 손글씨 스타일 폰트 */
+  margin-bottom: 20px; /* 아래쪽 여백 추가 */
+}
+
+.description {
+  font-size: 16px; /* 글자 크기 설정 */
+  margin-bottom: 10px; /* 아래쪽 여백 추가 */
+}
+
+.dice-icon {
+  /* 주사위 아이콘 이미지 스타일링 및 클릭 가능한 버튼 역할 부여 */
+  width: 100px;
+  height: 100px;
+  cursor: pointer; /* 마우스를 올렸을 때 클릭 가능하도록 설정 */
+  transition: transform 0.3s, box-shadow 0.3s; /* 클릭 시 이미지에 대한 시각적 효과 추가 */
+}
+
+.dice-icon:hover {
+  /* 주사위 아이콘에 마우스를 올렸을 때 약간 확대되는 효과 */
+  transform: scale(1.1);
+}
+
+.dice-icon.animate {
+  /* 주사위 클릭 시 3D 굴러가는 애니메이션 추가 */
+  animation: rollDice 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes rollDice {
+  0% { transform: rotate3d(0, 0, 0, 0deg); }
+  20% { transform: rotate3d(1, 1, 0, 180deg); }
+  50% { transform: rotate3d(1, 1, 1, 720deg); }
+  100% { transform: rotate3d(1, 1, 1, 1080deg); }
+}
+
+.station-description {
+  /* 선택된 역 이름과 안내 문구 스타일링 */
+  margin-top: 20px; /* 위쪽 여백 추가 */
+  padding: 15px 40px; /* 패딩을 조정하여 위아래 여백은 줄이고 좌우 여백도 감소 */
+  background-color: #c49c61; /* 배경색 설정 (역 색상과 유사) */
+  border: 5px solid #815e2c; /* 테두리 색상 설정 (진한 갈색) */
+  border-radius: 50px; /* 테두리를 완전히 둥글게 설정 */
+  display: inline-flex; /* inline-flex로 설정하여 너비가 내용에 맞게 조정 */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box; /* 테두리와 패딩을 포함한 전체 너비 설정 */
+  width: 300px; /* 너비를 자동으로 설정하여 패딩이 반영되도록 함 */
+  max-width: 100%; /* 최대 너비를 부모 요소에 맞추도록 설정 */
+}
+
+.station-description::before,
+.station-description::after {
+  /* 양 옆 선 모양 추가 */
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 90px;
+  height: 7px;
+  background-color: #815e2c; /* 선 색상 */
+}
+
+.station-description::before {
+  left: -90px;
+}
+
+.station-description::after {
+  right: -90px;
+}
+
+.station-information {
+  /* 선택된 역 이름과 안내 문구 스타일링 */
+  font-size: 18px; /* 글자 크기 설정 */
+  margin-top: 10px; /* 위쪽 여백 추가 */
+  color: #000; /* 글자색 검정색 설정 */
+}
+
+.station-name {
+  /* 선택된 역 이름 스타일링 */
+  font-size: 24px; /* 글자 크기 설정 */
+  font-weight: bold; /* 글자 굵기 설정 */
+  color: #000; /* 글자색 검정색 설정 */
+}
+
+.save-btn-container {
+  /* 저장 버튼을 포함하는 컨테이너 스타일링 */
+  display: flex;
+  justify-content: flex-end; /* 버튼을 우측에 배치 */
+  margin-top: 20px; /* 위쪽 여백 추가 */
+}
+
+.save-btn {
+  /* 역 저장 버튼 스타일링 */
+  padding: 10px 20px; /* 버튼 패딩 설정 */
+  border: none;
+  background-color: #d3e8f7; /* 버튼 배경색 설정 (연한 파랑) */
+  color: #000; /* 글자색 검정색 설정 */
+  font-size: 16px; /* 글자 크기 설정 */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* 배경색 전환 효과 */
+  border-radius: 8px; /* 버튼에 약간의 둥근 모서리 추가 */
+}
+
+.save-btn:hover {
+  /* 역 저장 버튼에 마우스를 올렸을 때 배경색 변경 */
+  background-color: #98c8eb;
+}
+
+.line-icon-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.line-icon {
+  margin: 0 8px;
+  width: 45px; /* 아이콘 너비 */
+  height: 45px; /* 아이콘 높이 */
+}
