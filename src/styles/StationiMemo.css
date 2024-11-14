@@ -1,12 +1,14 @@
 /* Wrapper to center the content */
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+
 .station-memo-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: #f9f9f9;
   box-sizing: border-box;
+  align-items: center;
 }
 
 /* Main container */
@@ -16,11 +18,8 @@
   width: 100%;
   max-width: 1000px;
   height: 560px;
-
   padding: 20px;
   box-sizing: border-box;
-
-
 }
 
 /* 저장된 역 목록 및 리스트를 감싸는 컨테이너 */
@@ -29,6 +28,9 @@
   display: flex;
   flex-direction: column;
   margin-right: 40px;
+  margin-top:200px;
+
+  transform: translateY(-320px);
 }
 
 /* 저장된 역 목록 박스 */
@@ -41,7 +43,7 @@
   border-radius: 15px;
   opacity: 1;
   background: rgba(141, 214, 255, 0.2);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
   font-size: 20px;
   color: #000000;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -70,7 +72,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* 배경색을 없애고 텍스트 색상만 변경 */
   background: none;
 }
 
@@ -96,88 +97,89 @@
   padding: 8px 16px;
   border-radius: 20px;
   border: none;
-  /* border 제거 */
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   color: #ffffff;
-  /* 텍스트 색상을 흰색으로 설정하여 배경과 대비 */
   background: transparent;
-  /* 배경을 투명하게 설정 */
 }
 
 /* 특정 라인 색상 - 배경 색상으로 설정 */
 .line-color-box-1 {
-  background-color: rgb(255, 255, 255);
-  /* 1호선 흰색 */
-  color: #000000;
-  /* 텍스트 색상 검정색으로 변경 */
+  background-color: #2a5ea8;
+  color: #ffffff;
 }
 
 .line-color-box-2 {
-  background-color: rgb(0, 185, 241);
-  /* 2호선 파란색 */
+  background-color: #42b157;
   color: #ffffff;
 }
 
 .line-color-box-3 {
-  background-color: rgb(255, 206, 0);
-  /* 3호선 주황색 */
+  background-color: #cb6625;
   color: #ffffff;
 }
 
 .line-color-box-4 {
-  background-color: rgb(0, 191, 54);
-  /* 4호선 초록색 */
+  background-color: #49aae8;
+  color: #ffffff;
+}
+
+.line-color-box-5 {
+  background-color: #9c60a8;
+  color: #ffffff;
+}
+
+.line-color-box-6 {
+  background-color: #c37135;
   color: #ffffff;
 }
 
 .line-color-box-7 {
-  background-color: rgb(255, 165, 0);
-  /* 7호선 주황색 */
+  background-color: #677617;
+  color: #ffffff;
+}
+
+.line-color-box-8 {
+  background-color: #ec2373;
+  color: #ffffff;
+}
+
+.line-color-box-9 {
+  background-color: #b3a58a;
   color: #ffffff;
 }
 
 /* 기본 색상 도형 */
 .line-color-box-default {
   background-color: rgb(200, 200, 200);
-  /* 기본 회색 */
   color: #000000;
 }
 
 /* 메모 작성 섹션 박스 */
 .memo-section {
   position: relative;
-  /* 자식 요소의 절대 위치를 위한 설정 */
   width: 65%;
+  height: 630px;
   display: flex;
   flex-direction: column;
+  top:-120px;
 }
 
 /* 선택된 역의 제목 */
 .selected-station-title {
   position: absolute;
-  /* 절대 위치 설정 */
   top: -70px;
-  /* 기존 -30px에서 20px 더 높게 설정 */
   left: 50%;
-  /* 좌측을 50%로 설정 */
   transform: translateX(-50%);
-  /* 중앙 정렬을 위해 X축으로 -50% 이동 */
   width: auto;
-  /* 내용에 맞춰 너비 자동 조정 */
   display: flex;
   justify-content: center;
-  /* 가운데 정렬 */
   align-items: center;
   height: 40px;
-  /* 제목의 높이 설정 */
   z-index: 2;
-  /* 다른 요소보다 위에 표시 */
   background: none;
-  /* 흰색 배경 제거 */
-
 }
 
 /* 선택된 역의 제목을 감싸는 도형 스타일 */
@@ -189,13 +191,10 @@
 .selected-station-title .line-color-box-default {
   display: inline-block;
   padding: 10px 20px;
-  /* 폰트 크기에 맞게 패딩 조정 */
   border-radius: 15px;
   border: none;
-  /* border 제거 */
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
   font-size: 40px;
-  /* 폰트 크기 40px로 증가 */
   font-weight: bold;
   text-align: center;
 }
@@ -209,9 +208,7 @@
 .selected-station-title .line-color-box-default h2 {
   margin: 0;
   font-size: inherit;
-  /* 부모의 폰트 크기 상속 */
   color: inherit;
-  /* 부모의 색상 상속 */
 }
 
 /* 메모 폼 박스 */
@@ -220,11 +217,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* 입력 필드 간격 조정 */
   background: rgba(90, 163, 203, 0.2);
   border-radius: 15px;
   padding: 20px;
-  /* 상단 여백 제거 */
   box-sizing: border-box;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
@@ -242,9 +237,7 @@
 .input-box img,
 .input-box-title label {
   width: 34px;
-  /* 34px로 변경 */
   height: 34px;
-  /* 34px로 변경 */
   margin-right: 10px;
 }
 
@@ -257,7 +250,7 @@
   border-radius: 8px;
   background: rgba(90, 163, 203, 0.2);
   padding: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
   font-size: 16px;
   color: #000000;
   outline: none;
@@ -272,7 +265,6 @@
 
 .memo-input-box img {
   width: 34px;
-  /* 34x34로 변경 */
   height: 34px;
   margin-right: 10px;
 }
@@ -284,7 +276,7 @@
   border-radius: 8px;
   background: rgba(90, 163, 203, 0.2);
   padding: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
   font-size: 16px;
   color: #000000;
   resize: none;
@@ -301,13 +293,11 @@
 
 .save-button {
   width: 200px;
-  /* 적절한 너비 설정 */
   height: 50px;
-  /* 높이 유지 */
   border: none;
   border-radius: 8px;
   background: rgba(90, 163, 203, 0.2);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
   font-size: 18px;
   color: #ffffff;
   cursor: pointer;

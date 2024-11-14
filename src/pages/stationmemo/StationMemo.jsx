@@ -1,4 +1,3 @@
-// src/pages/stationmemo/StationMemo.jsx
 import React, { useState, useEffect } from 'react';
 import '../../styles/StationiMemo.css';
 import MemoData from './MemoData';
@@ -10,6 +9,7 @@ import memoImage from '../../assets/images/memo.png';
 const StationMemo = () => {
   const [stationMemos, setStationMemos] = useState([]);
   const [newMemo, setNewMemo] = useState({
+    date: '', // 날짜 필드 추가
     food: '',
     caffe: '',
     memo: '',
@@ -47,11 +47,12 @@ const StationMemo = () => {
       return;
     }
 
-    const { food, caffe, memo } = newMemo;
-    if (food && caffe && memo) {
+    const { date, food, caffe, memo } = newMemo;
+    if (date && food && caffe && memo) {
       const updatedMemos = [...stationMemos];
       updatedMemos[selectedStation] = {
         ...updatedMemos[selectedStation],
+        date,
         food,
         caffe,
         memo,
@@ -69,6 +70,7 @@ const StationMemo = () => {
     // 선택된 역의 데이터를 newMemo에 채워 넣어 편집할 수 있도록 함
     const selected = stationMemos[index];
     setNewMemo({
+      date: selected.date || '', // 날짜 필드 추가
       food: selected.food,
       caffe: selected.caffe,
       memo: selected.memo,
@@ -76,102 +78,100 @@ const StationMemo = () => {
   };
 
   return (
-    <div className="station-memo-wrapper">
-      <div className="station-memo-container">
-        {/* 저장된 역 목록 및 리스트 */}
-        <div className="saved-stations-container">
-          {/* 저장된 역 목록 박스 */}
-          <div className="saved-stations-box">
-            저장된 역 목록
-          </div>
+      <div className="station-memo-wrapper">
+        <div className="station-memo-container">
+          {/* 저장된 역 목록 및 리스트 */}
+          <div className="saved-stations-container">
+            {/* 저장된 역 목록 박스 */}
+            <div className="saved-stations-box">
+              저장된 역 목록
+            </div>
 
-          {/* 저장된 역 목록 리스트 */}
-          <div className="saved-stations-list">
-            {stationMemos.map((memo, index) => (
-              <div
-                className={`station-title-item ${selectedStation === index ? 'active' : ''}`}
-                key={index}
-                onClick={() => handleSelect(index)}
-              >
+            {/* 저장된 역 목록 리스트 */}
+            <div className="saved-stations-list">
+              {stationMemos.map((memo, index) => (
+                  <div
+                      className={`station-title-item ${selectedStation === index ? 'active' : ''}`}
+                      key={index}
+                      onClick={() => handleSelect(index)}
+                  >
                 <span className={`line-color-box-${memo.line}`}>
                   {memo.title}
                 </span>
-              </div>
-            ))}
+                  </div>
+              ))}
+            </div>
           </div>
-        </div>
-        {/* 메모 작성 섹션 */}
-        <div className="memo-section">
-          {/* 선택된 역의 제목 표시 */}
-          {selectedStation !== null && (
-            <div className="selected-station-title">
+          {/* 메모 작성 섹션 */}
+          <div className="memo-section">
+            {/* 선택된 역의 제목 표시 */}
+            {selectedStation !== null && (
+                <div className="selected-station-title">
               <span className={`line-color-box-${stationMemos[selectedStation].line}`}>
                 {stationMemos[selectedStation].title}
               </span>
-            </div>
-          )}
+                </div>
+            )}
 
-          <div className="memo-form-box">
-            {/* 음식 입력 박스 */}
-            <div className="input-box">
-              <img src={foodImage} alt="Food Icon" />
-              <input
-                type="text"
-                name="food"
-                placeholder="음식을 입력하세요."
-                value={newMemo.food}
-                onChange={handleChange}
-              />
-            </div>
+            <div className="memo-form-box">
+              {/* 날짜 입력 박스 추가 */}
+              <div className="input-box">
+                <img src={memoImage} alt="Date Icon" />
+                <input
+                    type="text"
+                    name="date"
+                    placeholder="날짜를 기입해주세요."
+                    value={newMemo.date}
+                    onChange={handleChange}
+                />
+              </div>
 
-            {/* 카페 입력 박스 */}
-            <div className="input-box">
-              <img src={caffeImage} alt="Caffe Icon" />
-              <input
-                type="text"
-                name="caffe"
-                placeholder="카페를 입력하세요."
-                value={newMemo.caffe}
-                onChange={handleChange}
-              />
-            </div>
+              {/* 음식 입력 박스 */}
+              <div className="input-box">
+                <img src={foodImage} alt="Food Icon" />
+                <input
+                    type="text"
+                    name="food"
+                    placeholder="음식을 입력하세요."
+                    value={newMemo.food}
+                    onChange={handleChange}
+                />
+              </div>
 
-            {/* 메모 입력 박스 */}
-            <div className="memo-input-box">
-              <img src={memoImage} alt="Memo Icon" />
-              <textarea
-                name="memo"
-                placeholder="메모를 입력하세요."
-                value={newMemo.memo}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+              {/* 카페 입력 박스 */}
+              <div className="input-box">
+                <img src={caffeImage} alt="Caffe Icon" />
+                <input
+                    type="text"
+                    name="caffe"
+                    placeholder="카페를 입력하세요."
+                    value={newMemo.caffe}
+                    onChange={handleChange}
+                />
+              </div>
 
-            {/* 저장하기 버튼 */}
-            <div className="save-button-box">
-              <button className="save-button" onClick={handleSave}>
-                저장하기
-              </button>
+              {/* 메모 입력 박스 */}
+              <div className="memo-input-box">
+                <img src={memoImage} alt="Memo Icon" />
+                <textarea
+                    name="memo"
+                    placeholder="메모를 입력하세요."
+                    value={newMemo.memo}
+                    onChange={handleChange}
+                ></textarea>
+              </div>
+
+              {/* 저장하기 버튼 */}
+              <div className="save-button-box">
+                <button className="save-button" onClick={handleSave}>
+                  저장하기
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
 export default StationMemo;
-
-
-// import React from 'react';
-// import '../../styles/StationiMemo.css';
-
-// const StationiMemo = () => {
-//   return (
-//     <div className="main-page">
-//       <h1>역 메모장 화면</h1>
-//     </div>
-//   );
-// };
-
-// export default StationiMemo;
