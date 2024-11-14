@@ -1,3 +1,41 @@
+/* .main-page {
+  text-align: center;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+}
+
+.map-image {
+  width: 500px;
+  height: auto;
+}
+*/
+
+/* .district.seongbuk {
+  position: absolute;
+  top: 80px;
+  /* 성북구 위치 */
+/*left: 250px; */
+/* 성북구 위치 */
+
+/* .district .seongbuk-hover-image {
+  position: absolute;
+  width: 120px;
+  height: 100px;
+  background-image: url('../../public/assets/topography/성북구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+} */
+
+/* 핫스팟에 마우스를 올렸을 때 성북구 이미지 나타남 */
+/* .district:hover .seongbuk-hover-image {
+  opacity: 1;
+} */
+
+
 .main-page {
   text-align: center;
 }
@@ -12,8 +50,6 @@
   height: auto;
 }
 
-
-
 .district.seongbuk {
   position: absolute;
   top: 80px;
@@ -24,9 +60,9 @@
 
 .district .seongbuk-hover-image {
   position: absolute;
-  width: 120px;
+  width: 110px;
   height: 100px;
-  background-image: url('../../public/assets/topography/성북구.png');
+  background-image: url('../assets/topography/성북구.png');
   background-size: cover;
   opacity: 0;
   transition: opacity 0.3s;
@@ -35,4 +71,566 @@
 /* 핫스팟에 마우스를 올렸을 때 성북구 이미지 나타남 */
 .district:hover .seongbuk-hover-image {
   opacity: 1;
+}
+
+.district.gangbuk {
+  position: absolute;
+  top: 18px;
+  /* 성북구 위치 */
+  left: 266px;
+  /* 성북구 위치 */
+}
+
+.district .gangbuk-hover-image {
+  position: absolute;
+  width: 77px;
+  height: 110px;
+  background-image: url('../assets/topography/강북구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 핫스팟에 마우스를 올렸을 때 강북구 이미지 나타남 */
+.district:hover .gangbuk-hover-image {
+  opacity: 1;
+}
+
+.district.dobong {
+  position: absolute;
+  top: 0px;
+  /* 도봉구 위치 */
+  left: 300px;
+  /* 도봉구 위치 */
+}
+
+.district .dobong-hover-image {
+  position: absolute;
+  width: 55px;
+  height: 105px;
+  background-image: url('../assets/topography/도봉구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 핫스팟에 마우스를 올렸을 때 도봉구 이미지 나타남 */
+.district:hover .dobong-hover-image {
+  opacity: 1;
+}
+
+
+.district.nowon {
+  position: absolute;
+  top: 7px;
+  left: 320px;
+}
+
+.district .nowon-hover-image {
+  position: absolute;
+  width: 100px;
+  height: 135px;
+  background-image: url('../assets/topography/노원구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .nowon-hover-image {
+  opacity: 1;
+}
+
+.district.jungnang {
+  position: absolute;
+  top: 115px;
+  left: 350px;
+}
+
+.district .jungnang-hover-image {
+  position: absolute;
+  width: 65px;
+  height: 80px;
+  background-image: url('../assets/topography/중랑구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .jungnang-hover-image {
+  opacity: 1;
+}
+
+.district.dongdaemun {
+  position: absolute;
+  top: 130px;
+  left: 295px;
+}
+
+.district .dongdaemun-hover-image {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background-image: url('../assets/topography/동대문구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .dongdaemun-hover-image {
+  opacity: 1;
+}
+
+.district.kwangjin {
+  position: absolute;
+  top: 167px;
+  left: 318px;
+}
+
+.district .kwangjin-hover-image {
+  position: absolute;
+  width: 90px;
+  height: 110px;
+  background-image: url('../assets/topography/광진구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .kwangjin-hover-image {
+  opacity: 1;
+}
+
+.district.seongdong {
+  position: absolute;
+  top: 172px;
+  left: 280px;
+}
+
+.district .seongdong-hover-image {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background-image: url('../assets/topography/성동구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .seongdong-hover-image {
+  opacity: 1;
+}
+
+.district.jung {
+  position: absolute;
+  top: 172px;
+  left: 235px;
+}
+
+.district .jung-hover-image {
+  position: absolute;
+  width: 73px;
+  height: 43px;
+  background-image: url('../assets/topography/중구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .jung-hover-image {
+  opacity: 1;
+}
+
+.district.jongno {
+  position: absolute;
+  top: 90px;
+  left: 228px;
+}
+
+.district .jongno-hover-image {
+  position: absolute;
+  width: 75px;
+  height: 100px;
+  background-image: url('../assets/topography/종로구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .jongno-hover-image {
+  opacity: 1;
+}
+
+.district.yongsan {
+  position: absolute;
+  top: 190px;
+  left: 200px;
+}
+
+.district .yongsan-hover-image {
+  position: absolute;
+  width: 95px;
+  height: 80px;
+  background-image: url('../assets/topography/용산구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .yongsan-hover-image {
+  opacity: 1;
+}
+
+.district.mapo {
+  position: absolute;
+  top: 136px;
+  left: 127px;
+}
+
+.district .mapo-hover-image {
+  position: absolute;
+  width: 113px;
+  height: 93px;
+  background-image: url('../assets/topography/마포구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .mapo-hover-image {
+  opacity: 1;
+}
+
+.district.seodaemun {
+  position: absolute;
+  top: 117px;
+  left: 172px;
+}
+
+.district .seodaemun-hover-image {
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  background-image: url('../assets/topography/서대문구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .seodaemun-hover-image {
+  opacity: 1;
+}
+
+.district.eunpyeong {
+  position: absolute;
+  top: 53px;
+  left: 157px;
+}
+
+.district .eunpyeong-hover-image {
+  position: absolute;
+  width: 95px;
+  height: 105px;
+  background-image: url('../assets/topography/은평구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .eunpyeong-hover-image {
+  opacity: 1;
+}
+
+
+/*---------------------------------------*/
+
+.district.gangnam {
+  position: absolute;
+  top: 220px;
+  /* 강남구 위치 */
+  left: 285px;
+  /* 강남구 위치 */
+}
+
+.district .gangnam-hover-image {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image: url('../assets/topography/강남구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .gangnam-hover-image {
+  opacity: 1;
+}
+
+.district.songpa {
+  position: absolute;
+  top: 214px;
+  /* 강남구 위치 */
+  left: 334px;
+  /* 강남구 위치 */
+}
+
+.district .songpa-hover-image {
+  position: absolute;
+  width: 122px;
+  height: 122px;
+  background-image: url('../assets/topography/송파구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .songpa-hover-image {
+  opacity: 1;
+}
+
+.district.gangdong {
+  position: absolute;
+  top: 178px;
+  /* 강남구 위치 */
+  left: 396px;
+  /* 강남구 위치 */
+}
+
+.district .gangdong-hover-image {
+  position: absolute;
+  width: 80px;
+  height: 90px;
+  background-image: url('../assets/topography/강동구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .gangdong-hover-image {
+  opacity: 1;
+}
+
+.district.seocho {
+  position: absolute;
+  top: 229px;
+  /* 강남구 위치 */
+  left: 242px;
+  /* 강남구 위치 */
+}
+
+.district .seocho-hover-image {
+  position: absolute;
+  width: 137px;
+  height: 147px;
+  background-image: url('../assets/topography/서초구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .seocho-hover-image {
+  opacity: 1;
+}
+
+.district.dongjak {
+  position: absolute;
+  top: 228px;
+  /* 강남구 위치 */
+  left: 160px;
+  /* 강남구 위치 */
+}
+
+.district .dongjak-hover-image {
+  position: absolute;
+  width: 97px;
+  height: 92px;
+  background-image: url('../assets/topography/동작구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .dongjak-hover-image {
+  opacity: 1;
+}
+
+.district.kwanak {
+  position: absolute;
+  top: 268px;
+  /* 강남구 위치 */
+  left: 159px;
+  /* 강남구 위치 */
+}
+
+.district .kwanak-hover-image {
+  position: absolute;
+  width: 97px;
+  height: 89px;
+  background-image: url('../assets/topography/관악구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .kwanak-hover-image {
+  opacity: 1;
+}
+
+.district.geumcheon {
+  position: absolute;
+  top: 272px;
+  /* 강남구 위치 */
+  left: 129px;
+  /* 강남구 위치 */
+}
+
+.district .geumcheon-hover-image {
+  position: absolute;
+  width: 68px;
+  height: 83px;
+  background-image: url('../assets/topography/금천구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .geumcheon-hover-image {
+  opacity: 1;
+}
+
+.district.guro {
+  position: absolute;
+  top: 235px;
+  /* 강남구 위치 */
+  left: 68px;
+  /* 강남구 위치 */
+}
+
+.district .guro-hover-image {
+  position: absolute;
+  width: 100px;
+  height: 70px;
+  background-image: url('../assets/topography/구로구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .guro-hover-image {
+  opacity: 1;
+}
+
+.district.yangcheon {
+  position: absolute;
+  top: 180px;
+  /* 강남구 위치 */
+  left: 68px;
+  /* 강남구 위치 */
+}
+
+.district .yangcheon-hover-image {
+  position: absolute;
+  width: 100px;
+  height: 75px;
+  background-image: url('../assets/topography/양천구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .yangcheon-hover-image {
+  opacity: 1;
+}
+
+.district.yeongdeungpo {
+  position: absolute;
+  top: 169px;
+  /* 강남구 위치 */
+  left: 136px;
+  /* 강남구 위치 */
+}
+
+.district .yeongdeungpo-hover-image {
+  position: absolute;
+  width: 68px;
+  height: 118px;
+  background-image: url('../assets/topography/영등포구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .yeongdeungpo-hover-image {
+  opacity: 1;
+}
+
+/*---------------------------------------*/
+.district.gangseo {
+  position: absolute;
+  top: 100px;
+  /* 강남구 위치 */
+  left: 21px;
+  /* 강남구 위치 */
+}
+
+.district .gangseo-hover-image {
+  position: absolute;
+  width: 143px;
+  height: 143px;
+  background-image: url('../assets/topography/강서구.png');
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .gangseo-hover-image {
+  opacity: 1;
+}
+
+/* 호버 시 나타나는 이미지 스타일 */
+.district .district-hover-image {
+  width: 500px;
+  /* 고정 너비 */
+  height: 400px;
+  /* 고정 높이 */
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.district:hover .district-hover-image {
+  opacity: 1;
+}
+
+
+/* 선택된 구역 이미지와 사진 편집 버튼 스타일 */
+.selected-district-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+.selected-district-image {
+  width: 300px;
+  height: auto;
+  margin-top: 20px;
+}
+
+.edit-button {
+  position: absolute;
+  Width: 292px;
+  right: -250px;
+  top: 100px;
+  Height: 144px;
+  padding: 10px 15px;
+  background-color: #d5e9f5;
+  color: #000000;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #d5e9f5;
 }
