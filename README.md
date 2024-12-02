@@ -1,4 +1,4 @@
-<h3>window에서 실행 방법</h3>
+### window에서 실행 방법
 
 1. `cd src\database`로 이동  
 2. 터미널에서 아래 명령어를 실행하여 JSON 로그인 서버를 실행:
@@ -7,15 +7,27 @@
 3. 새 터미널에서 `npm start` 실행 <br/><br/>
 
 
-<hr/>
-<h3>프로젝트 개발 환경</h3>
+#### npm install 후 설치 오류가 생길 경우
+- `npm install`: 기본 리액트 구성 설치
+- `cd src/database`: 가상 데이터 서버 폴더로 이동
+- `npx json-server --watch data.json --port 3001 --host 0.0.0.0`: 가상 데이터 서버 실행
+  <br/><br/>
+새 터미널 열고 입력
+- `npm install react-router-dom`: 페이지 이동 라이브러리 설치
+- `npm install axios`: 리액트 서버 요청 라이브러리 설치
+- `npm install react-icons`: 리액트 아이콘 라이브러리 설치
+
+***
+
+### 프로젝트 개발 환경
 
 `"react": "18.3.1"`
 <br/><br/>
 
 
-<hr/>
-<h3>파일 디렉토리</h3>
+***
+
+### 파일 디렉토리
 
 ```
 src/
