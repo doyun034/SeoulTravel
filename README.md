@@ -6,11 +6,13 @@
    npx json-server --watch data.json --port 3001 --host 0.0.0.0
 3. 새 터미널에서 `npm start` 실행 <br/><br/>
 
+
 <hr/>
 <h3>프로젝트 개발 환경</h3>
 
 `"react": "18.3.1"`
 <br/><br/>
+
 
 <hr/>
 <h3>파일 디렉토리</h3>
