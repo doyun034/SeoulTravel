@@ -45,13 +45,13 @@
 .district.seongbuk {
   position: absolute;
   z-index: 1;
-  top: 185px;
-  left: 690px;
+  top: 183px;
+  left: 688px;
 }
 
 .district.seongbuk .seongbuk-hover-image {
-  width: 185px;
-  height: 164px;
+  width: 194px;
+  height: 165px;
   background-image: url('../assets/topography/성북구.png');
 }
 
@@ -64,7 +64,7 @@
 
 .district.gangbuk .gangbuk-hover-image {
   width: 140px;
-  height: 215px;
+  height: 217px;
   background-image: url('../assets/topography/강북구.png');
 }
 
@@ -72,7 +72,7 @@
 .district.dobong {
   position: absolute;
   top: 34px;
-  left: 770px;
+  left: 769px;
 }
 
 .district.dobong .dobong-hover-image {
@@ -85,12 +85,12 @@
 .district.nowon {
   position: absolute;
   top: 44px;
-  left: 813px;
+  left: 812px;
 }
 
 .district.nowon .nowon-hover-image {
-  width: 170px;
-  height: 240px;
+  width: 171px;
+  height: 241px;
   background-image: url('../assets/topography/노원구.png');
 }
 
@@ -111,13 +111,13 @@
 .district.dongdaemun {
   position: absolute;
   z-index: 3;
-  top: 268px;
-  left: 768px;
+  top: 267px;
+  left: 767px;
 }
 
 .district.dongdaemun .dongdaemun-hover-image {
-  width: 126px;
-  height: 130px;
+  width: 127px;
+  height: 132px;
   background-image: url('../assets/topography/동대문구.png');
 }
 
@@ -137,7 +137,7 @@
 /* 성동구 */
 .district.seongdong {
   position: absolute;
-  top: 338px;
+  top: 340px;
   left: 735px;
 }
 
@@ -170,7 +170,7 @@
 }
 
 .district.jongno .jongno-hover-image {
-  width: 140px;
+  width: 145px;
   height: 185px;
   background-image: url('../assets/topography/종로구.png');
 }
@@ -219,13 +219,13 @@
 /* 은평구 */
 .district.eunpyeong {
   position: absolute;
-  top: 126px;
-  left: 510px;
+  top: 123px;
+  left: 508px;
 }
 
 .district.eunpyeong .eunpyeong-hover-image {
-  width: 175px;
-  height: 195px;
+  width: 176px;
+  height: 206px;
   background-image: url('../assets/topography/은평구.png');
 }
 
@@ -233,13 +233,13 @@
 .district.gangnam {
   position: absolute;
   z-index: 1;
-  top: 438px;
-  left: 750px;
+  top: 437px;
+  left: 748px;
 }
 
 .district.gangnam .gangnam-hover-image {
-  width: 195px;
-  height: 207px;
+  width: 200px;
+  height: 210px;
   background-image: url('../assets/topography/강남구.png');
 }
 
@@ -259,25 +259,25 @@
 /* 강동구 */
 .district.gangdong {
   position: absolute;
-  top: 352px;
+  top: 353px;
   left: 945px;
 }
 
 .district.gangdong .gangdong-hover-image {
-  width: 147px;
-  height: 160px;
+  width: 146px;
+  height: 162px;
   background-image: url('../assets/topography/강동구.png');
 }
 
 /* 서초구 */
 .district.seocho {
   position: absolute;
-  top: 442px;
+  top: 445px;
   left: 664px;
 }
 
 .district.seocho .seocho-hover-image {
-  width: 250px;
+  width: 252px;
   height: 265px;
   background-image: url('../assets/topography/서초구.png');
 }
@@ -285,13 +285,13 @@
 /* 동작구 */
 .district.dongjak {
   position: absolute;
-  top: 440px;
+  top: 442px;
   left: 518px;
 }
 
 .district.dongjak .dongjak-hover-image {
-  width: 190px;
-  height: 137px;
+  width: 189px;
+  height: 165px;
   background-image: url('../assets/topography/동작구.png');
 }
 
@@ -338,26 +338,26 @@
 .district.yangcheon {
   position: absolute;
   z-index: 1;
-  top: 356px;
-  left: 355px;
+  top: 355px;
+  left: 354px;
 }
 
 .district.yangcheon .yangcheon-hover-image {
-  width: 175px;
-  height: 152px;
+  width: 180px;
+  height: 153px;
   background-image: url('../assets/topography/양천구.png');
 }
 
 /* 영등포구 */
 .district.yeongdeungpo {
   position: absolute;
-  top: 336px;
+  top: 334px;
   left: 475px;
 }
 
 .district.yeongdeungpo .yeongdeungpo-hover-image {
-  width: 120px;
-  height: 205px;
+  width: 121px;
+  height: 224px;
   background-image: url('../assets/topography/영등포구.png');
 }
 
@@ -369,8 +369,8 @@
 }
 
 .district.gangseo .gangseo-hover-image {
-  width: 263px;
-  height: 230px;
+  width: 264px;
+  height: 290px;
   background-image: url('../assets/topography/강서구.png');
 }
 
@@ -388,6 +388,7 @@
   height: auto;
   margin-top: 20px;
 }
+
 
 .edit-button {
   position: absolute;
@@ -440,7 +441,7 @@
 
 .seoulmap-button-container {
   position: absolute;
-  top: 10px;
+  top: 50px;
   left: 1100px;
   display: flex;
   flex-direction: row;

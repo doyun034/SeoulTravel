@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../styles/EditMap.css';
 import uploadIcon from '../../assets/images/upload.png';
 import tablerMapStar from '../../assets/images/tabler_map-star.png'; // 헤더 아이콘 추가
@@ -93,7 +93,7 @@ const districtNames = {
 
 const EditMap = () => {
   const location = useLocation();
-  // district 정보를 navigation state 또는 localStorage에서 가져옵니다.
+  const navigate = useNavigate();
   const district = location.state?.district || localStorage.getItem('lastSelectedDistrict');
   const [clippedImageSrc, setClippedImageSrc] = useState(() => {
     return localStorage.getItem(`clippedImageSrc_${district}`) || null;
@@ -138,10 +138,27 @@ const EditMap = () => {
 
         const dataUrl = canvas.toDataURL('image/png');
         setClippedImageSrc(dataUrl);
-        localStorage.setItem(`clippedImageSrc_${district}`, dataUrl);
+        // localStorage.setItem(`clippedImageSrc_${district}`, dataUrl);
       };
     };
   };
+
+  const handleSave = () => {
+    if (clippedImageSrc) {
+      localStorage.setItem(`clippedImageSrc_${district}`, clippedImageSrc);
+      alert('저장되었습니다.');
+      navigate('/seoultravel/seoulmap');
+    }
+  };
+
+  const handleDelete = () => {
+    setClippedImageSrc(null); // 클립된 이미지를 삭제
+    localStorage.removeItem(`clippedImageSrc_${district}`); // 로컬 스토리지에서 제거
+    alert("사진이 삭제되었습니다."); // 삭제 알림
+    navigate('/seoultravel/seoulmap'); // /seoultravel/seoulmap 페이지로 이동
+  };
+
+
 
   useEffect(() => {
     if (clippedImageSrc) {
@@ -192,37 +209,46 @@ const EditMap = () => {
           <div className="edit-map-right-content">
             {/* 텍스트 추가 */}
             <p className="edit-map-right-text">지도에 사진을 넣어 나만의 지도를 만들어보아요!</p>
-            <div className="edit-map-right-buttons">
-              {clippedImageSrc ? (
-                <img
-                  src={clippedImageSrc}
-                  alt={`클립핑된 ${districtName} 이미지`}
-                  className="edit-map-image"
-                />
-              ) : (
-                <img
-                  src={districtImages[district]}
-                  alt={`${districtName} 이미지`}
-                  className="edit-map-image"
-                />
-              )}
+            {/* 이미지 표시 */}
+            <img
+              src={clippedImageSrc || districtImages[district]}
+              alt={`${districtName} 이미지`}
+              className="edit-map-image"
+            />
+            {/* 나만의 이미지 편집 버튼 */}
+            <button
+              className="edit-map-button"
+              onClick={() => document.getElementById('upload').click()}
+            >
+              <img src={uploadIcon} alt="Upload Icon" className="edit-map-upload-icon" />
+              <span className="edit-map-button-text">나만의 지도 편집</span>
+            </button>
+            {/* 저장/삭제 버튼 컨테이너 */}
+            <div className="edit-map-button-row">
+              {/* 저장하기 버튼 */}
+              <button className="save-button" onClick={handleSave}>
+                저장하기
+              </button>
+              {/* 삭제하기 버튼 */}
               <button
-                className="edit-map-button"
-                onClick={() => document.getElementById('upload').click()}
+                className="reset-button"
+                onClick={handleDelete}
               >
-                <img src={uploadIcon} alt="Upload Icon" className="edit-map-upload-icon" />
-                <span className="edit-map-button-text">나만의 지도 편집</span>
+                사진 삭제하기
               </button>
             </div>
+            {/* 숨겨진 파일 업로드 인풋 */}
             <input
               type="file"
               id="upload"
               style={{ display: 'none' }}
               onChange={handleImageUpload}
             />
+            {/* 숨겨진 캔버스 */}
             <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
           </div>
         </div>
+
       </div>
     </div>
   );
@@ -232,9 +258,6 @@ export default EditMap;
 
 
 
-
-
-// // src/pages/editmap/EditMap.jsx
 
 // import React, { useState, useRef, useEffect } from 'react';
 // import { useLocation } from 'react-router-dom';
@@ -331,7 +354,6 @@ export default EditMap;
 
 // const EditMap = () => {
 //   const location = useLocation();
-//   // district 정보를 navigation state 또는 localStorage에서 가져옵니다.
 //   const district = location.state?.district || localStorage.getItem('lastSelectedDistrict');
 //   const [clippedImageSrc, setClippedImageSrc] = useState(() => {
 //     return localStorage.getItem(`clippedImageSrc_${district}`) || null;
@@ -444,21 +466,32 @@ export default EditMap;
 //                   className="edit-map-image"
 //                 />
 //               )}
-//               <button
-//                 className="edit-map-button"
-//                 onClick={() => document.getElementById('upload').click()}
-//               >
-//                 <img src={uploadIcon} alt="Upload Icon" className="edit-map-upload-icon" />
-//                 <span className="edit-map-button-text">나만의 지도 편집</span>
-//               </button>
+//               <div className="edit-map-button-group">
+//                 <button
+//                   className="edit-map-button"
+//                   onClick={() => document.getElementById('upload').click()}
+//                 >
+//                   <img src={uploadIcon} alt="Upload Icon" className="edit-map-upload-icon" />
+//                   <span className="edit-map-button-text">나만의 지도 편집</span>
+//                 </button>
+//                 <button
+//                   className="edit-map-button delete-button"
+//                   onClick={() => {
+//                     setClippedImageSrc(null); // 클립된 이미지를 삭제
+//                     localStorage.removeItem(`clippedImageSrc_${district}`); // 로컬 스토리지에서 제거
+//                   }}
+//                 >
+//                   <span className="edit-map-button-text">사진 삭제하기</span>
+//                 </button>
+//               </div>
 //             </div>
+
 //             <input
 //               type="file"
 //               id="upload"
 //               style={{ display: 'none' }}
 //               onChange={handleImageUpload}
 //             />
-//             {/* 캔버스 요소 */}
 //             <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
 //           </div>
 //         </div>
@@ -468,4 +501,3 @@ export default EditMap;
 // };
 
 // export default EditMap;
-
