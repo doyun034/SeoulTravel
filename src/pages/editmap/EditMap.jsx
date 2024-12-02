@@ -216,6 +216,7 @@ const EditMap = () => {
               alt={`${districtName} 이미지`}
               className="edit-map-image-right"
             />
+            
             {/* 나만의 이미지 편집 버튼 */}
             <button
               className="edit-map-button"

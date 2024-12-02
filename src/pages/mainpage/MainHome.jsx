@@ -12,7 +12,7 @@ const MainHome = () => {
   const navigate = useNavigate();
   const [userId, setUserId] = useState(null);
 
-  //로컬 스토리지에서 유저 아이지 존재 확인
+  //로컬 스토리지에서 유저 아이디 존재 확인
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
     setUserId(storedUserId);
