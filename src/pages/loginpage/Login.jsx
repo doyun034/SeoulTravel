@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -8,6 +8,7 @@ const Login = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const pwInputRef = useRef(null); // 비밀번호 입력 필드 ref
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -19,8 +20,8 @@ const Login = () => {
 
       if (user) {
         alert("로그인 성공!");
-        localStorage.setItem('userId', user.memId); // 로컬 스토리지에 유저 아이디 저장
-        navigate("/");
+        localStorage.setItem("userId", user.memId); // 로컬 스토리지에 유저 아이디 저장
+        window.location.href = "/";
       } else {
         alert("아이디 또는 비밀번호가 올바르지 않습니다.");
       }
@@ -47,6 +48,9 @@ const Login = () => {
               placeholder="아이디 입력"
               value={id}
               onChange={(e) => setId(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") pwInputRef.current.focus(); // 엔터 키로 비밀번호 필드로 이동
+              }}
             />
           </div>
 
@@ -60,6 +64,10 @@ const Login = () => {
               value={pw}
               onChange={(e) => setPw(e.target.value)}
               className="input-field"
+              ref={pwInputRef} // ref 연결
+              onKeyPress={(e) => {
+                if (e.key === "Enter") handleLogin(); // 엔터 키로 로그인 실행
+              }}
             />
             <span className="password-toggle" onClick={togglePasswordVisibility}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -76,6 +84,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 // import React, { useState } from 'react';

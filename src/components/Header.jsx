@@ -24,6 +24,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('userId'); // 로컬 스토리지에서 유저 아이디 삭제
     setUserId(null); // 유저 상태 초기화
+    window.location.reload();
     alert("로그아웃 되었습니다.");
     navigate('/'); // 로그아웃 후 홈으로 이동
   };
