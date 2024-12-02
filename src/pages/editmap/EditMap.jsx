@@ -143,6 +143,7 @@ const EditMap = () => {
     };
   };
 
+  // 저장하기 버튼
   const handleSave = () => {
     if (clippedImageSrc) {
       localStorage.setItem(`clippedImageSrc_${district}`, clippedImageSrc);
@@ -213,7 +214,7 @@ const EditMap = () => {
             <img
               src={clippedImageSrc || districtImages[district]}
               alt={`${districtName} 이미지`}
-              className="edit-map-image"
+              className="edit-map-image-right"
             />
             {/* 나만의 이미지 편집 버튼 */}
             <button
