@@ -1,4 +1,4 @@
-### window에서 실행 방법
+### window 및 mac 에서 실행 방법 (과정 동일)
 
 1. `cd src\database`로 이동  
 2. 터미널에서 아래 명령어를 실행하여 JSON 로그인 서버를 실행:
