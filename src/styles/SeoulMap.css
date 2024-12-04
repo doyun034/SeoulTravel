@@ -178,12 +178,12 @@
 /* 용산구 */
 .district.yongsan {
   position: absolute;
-  top: 375px;
-  left: 594px;
+  top: 373px;
+  left: 592px;
 }
 
 .district.yongsan .yongsan-hover-image {
-  width: 190px;
+  width: 195px;
   height: 140px;
   background-image: url('../assets/topography/용산구.png');
 }

@@ -18,6 +18,7 @@ const MainHome = () => {
     setUserId(storedUserId);
   }, []);
 
+  // 주사위 굴리기 버튼 클릭 시, 유저 정보가 없으면 로그인 권유, 정보가 있으면 화면 전환
   const handleButtonClick = () => {
     if (!userId) {
       alert("로그인 후 이용 가능합니다!");
@@ -26,6 +27,8 @@ const MainHome = () => {
       navigate("/seoultravel/random/station");
     }
   };
+
+
   return (
     <div className="mainPage-container">
       <div className="mainframe">
