@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import html2canvas from 'html2canvas';
 import '../../styles/SeoulMap.css';
-import seoulMapImage from '../../assets/topography/서울지형.png';
 
-// 각 구역별 이미지 파일 가져오기
+import seoulMapImage from '../../assets/topography/서울지형.png';
 import gangbukImage from '../../assets/topography/강북구.png';
 import seongbukImage from '../../assets/topography/성북구.png';
 import gangnamImage from '../../assets/topography/강남구.png';
@@ -28,9 +29,7 @@ import guroImage from '../../assets/topography/구로구.png';
 import yangcheonImage from '../../assets/topography/양천구.png';
 import yeongdeungpoImage from '../../assets/topography/영등포구.png';
 import gangseoImage from '../../assets/topography/강서구.png';
-import uploadIcon from '../../assets/images/upload.png';
 
-// 구역별 이미지 매핑
 const districtImages = {
   gangbuk: gangbukImage,
   seongbuk: seongbukImage,
@@ -63,115 +62,128 @@ const SeoulMap = () => {
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [clippedImageSrcs, setClippedImageSrcs] = useState(() => {
     const initialSrcs = {};
-    Object.keys(districtImages).forEach(district => {
+    Object.keys(districtImages).forEach((district) => {
       initialSrcs[district] = localStorage.getItem(`clippedImageSrc_${district}`) || null;
     });
     return initialSrcs;
   });
   const canvasRefs = useRef({});
+  const mapContainerRef = useRef(null); // 전체 영역 캡쳐용 ref
+  const navigate = useNavigate();
+
 
   const handleDistrictClick = (district) => {
     setSelectedDistrict(district);
+    localStorage.setItem('lastSelectedDistrict', district);
+    navigate('/seoultravel/edit/map', { state: { district } });
   };
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file && selectedDistrict) {
-      setClippedImageSrcs((prevSrcs) => ({
-        ...prevSrcs,
-        [selectedDistrict]: null,
-      }));
+  // 모든 사진 초기화 함수
+  const handleResetAll = () => {
+    Object.keys(clippedImageSrcs).forEach((district) => {
+      localStorage.removeItem(`clippedImageSrc_${district}`);
+    });
+    setClippedImageSrcs(() => {
+      const resetSrcs = {};
+      Object.keys(districtImages).forEach((district) => {
+        resetSrcs[district] = null;
+      });
+      return resetSrcs;
+    });
+  };
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        const imageSrc = reader.result;
-        applyImageToDistrict(selectedDistrict, imageSrc);
-      };
-      reader.readAsDataURL(file);
+  // 전체 영역을 캡쳐하여 저장하는 함수
+  const handleSaveImage = () => {
+    const mapContainer = mapContainerRef.current;
+
+    if (!mapContainer) {
+      console.error('mapContainer가 존재하지 않습니다.');
+      return;
     }
+
+    html2canvas(mapContainer, {
+      useCORS: true, // 외부 이미지 처리
+      scale: 2, // 캡처 해상도를 3배로 증가
+      scrollX: 0, // 스크롤 위치 무시
+      scrollY: 0,
+    })
+      .then((canvas) => {
+        const imageURL = canvas.toDataURL('image/png'); // 캡처한 이미지를 URL로 변환
+        const link = document.createElement('a');
+        link.download = 'seoul_map.png'; // 다운로드 파일 이름 설정
+        link.href = imageURL; // URL 설정
+        link.click(); // 다운로드 실행
+      })
+      .catch((error) => {
+        console.error('html2canvas 캡처 중 오류 발생:', error);
+      });
   };
 
-  const applyImageToDistrict = (district, imageSrc) => {
-    const canvas = canvasRefs.current[district];
-    if (!canvas || !districtImages[district]) return;
 
-    const ctx = canvas.getContext('2d');
-    const districtImage = new Image();
-    districtImage.src = districtImages[district];
-    const uploaded = new Image();
-    uploaded.src = imageSrc;
-
-    districtImage.onload = () => {
-      canvas.width = districtImage.width;
-      canvas.height = districtImage.height;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(districtImage, 0, 0);
-
-      uploaded.onload = () => {
-        ctx.globalCompositeOperation = 'source-in';
-        ctx.drawImage(uploaded, 0, 0, districtImage.width, districtImage.height);
-        ctx.globalCompositeOperation = 'source-over';
-
-        const dataUrl = canvas.toDataURL('image/png');
-        setClippedImageSrcs((prevSrcs) => ({
-          ...prevSrcs,
-          [district]: dataUrl,
-        }));
-        localStorage.setItem(`clippedImageSrc_${district}`, dataUrl);
-      };
-    };
-  };
 
   useEffect(() => {
-    if (selectedDistrict && clippedImageSrcs[selectedDistrict]) {
-      const img = new Image();
-      img.src = clippedImageSrcs[selectedDistrict];
-      img.onload = () => {
-        const canvas = canvasRefs.current[selectedDistrict];
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0);
-      };
-    }
-  }, [selectedDistrict, clippedImageSrcs]);
+    Object.keys(districtImages).forEach((district) => {
+      if (clippedImageSrcs[district]) {
+        const img = new Image();
+        img.src = clippedImageSrcs[district];
+        img.onload = () => {
+          const canvas = canvasRefs.current[district];
+          if (!canvas) return;
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+        };
+        img.onerror = () => {
+          console.error(`이미지 로드 실패: ${clippedImageSrcs[district]}`);
+        };
+      }
+    });
+  }, [clippedImageSrcs]);
 
   return (
-    <div className="main-page">
-      <h1>서울 지도 화면</h1>
-      <div className="map-container">
+    <div className="seoulmap-page">
+      <div className="map-container" ref={mapContainerRef}>
         <img src={seoulMapImage} alt="서울 지형" className="map-image" />
 
-        {Object.keys(districtImages).map(district => (
-          <div key={district} className={`district ${district}`} onClick={() => handleDistrictClick(district)}>
-            <div className={`${district}-hover-image`}>
+        {Object.keys(districtImages).map((district) => (
+          <div
+            key={district}
+            className={`district ${district}`}
+            onClick={() => handleDistrictClick(district)}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') handleDistrictClick(district);
+            }}
+            aria-label={`Select ${district}`}
+          >
+            <div
+              className={`${district}-hover-image hover-image ${clippedImageSrcs[district] ? 'uploaded' : ''
+                }`}
+            >
               {clippedImageSrcs[district] ? (
-                <img src={clippedImageSrcs[district]} alt={`클립핑된 ${district} 이미지`} style={{ width: '100%', height: '100%' }} />
+                <img
+                  src={clippedImageSrcs[district]}
+                  alt={`클립핑된 ${district} 이미지`}
+                  style={{ width: '100%', height: '100%' }}
+                />
               ) : (
                 <canvas ref={(el) => (canvasRefs.current[district] = el)} style={{ display: 'none' }}></canvas>
               )}
             </div>
           </div>
         ))}
+      </div>
 
-        {selectedDistrict && (
-          <div className="selected-district-view">
-            <img src={clippedImageSrcs[selectedDistrict] || districtImages[selectedDistrict]} alt={`${selectedDistrict} 이미지`} className="selected-district-image" />
-            <button className="edit-button" onClick={() => document.getElementById('upload').click()}>
-              <img src={uploadIcon} alt="Upload Icon" className="upload-icon" />
-              <span>나만의 지도 편집</span>
-            </button>
-            <input
-              type="file"
-              id="upload"
-              style={{ display: 'none' }}
-              onChange={handleImageUpload}
-            />
-          </div>
-        )}
+      <div className="seoulmap-button-container">
+        <button onClick={handleResetAll} className="reset-button">
+          모두 초기화
+        </button>
+        <button onClick={handleSaveImage} className="save-button">
+          사진 저장
+        </button>
       </div>
     </div>
   );
@@ -179,26 +191,3 @@ const SeoulMap = () => {
 
 export default SeoulMap;
 
-
-// import React from 'react';
-// import '../../styles/SeoulMap.css';
-
-// const SeoulMap = () => {
-//   return (
-//     <div className="main-page">
-//       <h1>서울 지도 화면</h1>
-//       <div className="map-container">
-//         <img src="/assets/topography/서울지형.png" alt="서울 지형" className="map-image" />
-
-//         {/* 성북구 핫스팟 */}
-//         <div className="district seongbuk">
-//           <div className="seongbuk-hover-image"></div>
-//         </div>
-
-//         {/* 다른 구를 추가하려면 여기에 비슷한 형식으로 추가 */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SeoulMap;

@@ -7,7 +7,7 @@ import RandomStation from './pages/randomstationpage/RandomStation';
 import Login from './pages/loginpage/Login';
 import StationiMemo from './pages/stationmemo/StationMemo';
 import EditMap from './pages/editmap/EditMap';
-import SignUp from './pages/loginpage/SiginUp';
+import SignUp from './pages/loginpage/SignUp';
 
 function App() {
   return (
