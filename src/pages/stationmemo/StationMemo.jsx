@@ -82,6 +82,7 @@ const StationMemo = () => {
         caffe,
         memo,
       };
+
       setStationMemos(updatedMemos);
       alert('메모가 성공적으로 저장되었습니다.');
     } else {
