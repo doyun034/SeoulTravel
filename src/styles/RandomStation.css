@@ -1,82 +1,42 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #fafafa;
-  color: #333;
+* {
+  position: relative;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.header {
+.randomstation-page {
   display: flex;
-  justify-content: space-between;
+  /* flex-direction: row; */
   align-items: center;
-  padding: 20px;
-  background-color: #f0f0f0;
+  width: 100vw;
+  max-width: 100%;
+  height: 90vh;
 }
 
-.logo {
-  width: 80px;
-}
-
-.nav ul {
-  list-style: none;
+.randomstation-content {
   display: flex;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-}
-
-.nav ul li a {
-  text-decoration: none;
-  color: #333;
-  transition: color 0.3s;
-}
-
-.nav ul li a:hover {
-  color: #007bff;
-}
-
-.login-btn,
-.signup-btn {
-  margin-left: 10px;
-  padding: 8px 16px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.login-btn:hover,
-.signup-btn:hover {
-  background-color: #0056b3;
-}
-
-.main-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: stretch; */
   flex-direction: row;
-  padding: 40px;
-  max-width: 1200px;
+  padding: 50px;
   width: 100%;
 }
 
-.map-container {
-  flex: 1;
-  margin-right: 20px;
+.randomstation-container {
+  /* flex: 1; */
+  position: relative;
+  /* margin-right: 20px; */
+  /* flex-shrink: 0; */
+  top: 20px;
+  max-width: 650px;
 }
 
+/*서울 지도 이미지의 크기*/
 .seoul-map {
   width: 100%;
   height: auto;
-  border: none;
+  /* border: none; */
 }
 
 .random-station-container {
@@ -84,67 +44,138 @@ body {
   text-align: center;
   background-color: #fff;
   padding: 40px;
-  border-radius: 20px;
-  border: 3px solid #d3a966;
+  margin-left: 20px;
 }
 
 .title {
-  font-family: 'Brush Script MT', cursive;
   font-size: 32px;
+  font-family: 'Brush Script MT', cursive;
   margin-bottom: 20px;
 }
 
-.dice-button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+.description {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
+/* 주사위 아이콘 이미지 스타일링 및 클릭 가능한 버튼 역할*/
 .dice-icon {
   width: 100px;
   height: 100px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.random-btn {
+.dice-icon:hover {
+  transform: scale(1.1);
+}
+
+.dice-icon.animate {
+  animation: rollDice 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes rollDice {
+  0% {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+
+  20% {
+    transform: rotate3d(1, 1, 0, 180deg);
+  }
+
+  50% {
+    transform: rotate3d(1, 1, 1, 720deg);
+  }
+
+  100% {
+    transform: rotate3d(1, 1, 1, 1080deg);
+  }
+}
+
+/*선택된 역 이름과 안내 문구*/
+.station-description {
+  margin-top: 20px;
+  padding: 15px 40px;
+  background-color: #c49c61;
+  border: 5px solid #815e2c;
+  border-radius: 50px;
+  display: inline-flex;
+  /* inline-flex로 설정하여 너비가 내용에 맞게 조정 */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  width: 300px;
+  max-width: 100%;
+}
+
+/*양 옆 선 모양*/
+.station-description::before,
+.station-description::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 90px;
+  height: 7px;
+  background-color: #815e2c;
+  /* 선 색상 */
+}
+
+.station-description::before {
+  left: -90px;
+}
+
+.station-description::after {
+  right: -90px;
+}
+
+/*선택된 역 이름과 안내 문구*/
+.station-information {
+  font-size: 18px;
+  margin: 15px;
+  color: #000;
+}
+
+/*선택된 역 이름*/
+.station-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+/*저장 버튼을 포함하는 컨테이너*/
+.save-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/*역 저장 버튼*/
+.save-btn {
   padding: 10px 20px;
   border: none;
-  background-color: #ff5722;
-  color: #fff;
+  background-color: #95c3e5;
+  color: #000;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 8px;
 }
 
-.random-btn:hover {
-  background-color: #e64a19;
-}
-
-.station-info {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border: 2px solid #d3a966;
-  border-radius: 10px;
-}
-
-.station-name {
-  font-size: 28px;
-  font-weight: bold;
-  color: #d3a966;
-}
-
-.save-btn {
-  margin-top: 20px;
-  padding: 8px 16px;
-  border: none;
-  background-color: #5c5c5c;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
+/*역 저장 버튼에 마우스를 올렸을 때 배경색 변경*/
 .save-btn:hover {
-  background-color: #388e3c;
+  background-color: #85c2ed;
+}
+
+.line-icon-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/*아이콘 크기*/
+.line-icon {
+  margin: 0 8px;
+  width: 45px;
+  height: 45px;
 }
