@@ -1,0 +1,117 @@
+/* SignUp.css */
+
+/* 회원가입 컨테이너 스타일 */
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  width: 350px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 효과 */
+  border-radius: 8px;
+  /* 둥근 모서리 */
+  margin: auto;
+  /* 화면 중앙 배치 */
+}
+
+/* 제목 스타일 */
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  /* 제목 중앙 정렬 */
+  font-weight: 600;
+  /* 굵게 표시 */
+}
+
+/* 입력 필드 및 내용 컨테이너 */
+.loginContents {
+  width: 100%;
+}
+
+.inputWrap {
+  margin-bottom: 15px;
+  /* 입력 필드 사이 간격 */
+}
+
+.inputWrap label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  /* 라벨과 입력 필드 사이 간격 */
+}
+
+.inputWrap input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  /* 포커스 시 경계선 색상 전환 */
+}
+
+/* 입력 필드 포커스 시 경계선 색상 변경 */
+.inputWrap input:focus {
+  border-color: #007bff;
+  outline: none;
+  /* 기본 아웃라인 제거 */
+}
+
+/* 회원가입 버튼 스타일 */
+.signup {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+/* 회원가입 버튼 호버 시 배경색 변경 */
+.signup:hover {
+  background-color: #0056b3;
+}
+
+/* 비밀번호 보기 기능을 위한 아이콘과 필드 스타일 추가 */
+.password-field {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 30px;
+  /* 아이콘이 들어갈 공간 확보 */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+/* 비밀번호 보기 토글 아이콘 스타일 */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  /* 입력 필드의 오른쪽 여백에 맞춰 위치 */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
+.password-toggle:hover {
+  color: #007bff;
+}
